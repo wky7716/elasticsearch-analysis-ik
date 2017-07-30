@@ -1,5 +1,8 @@
 package org.wltea.analyzer.db;
 
+import org.apache.logging.log4j.Logger;
+import org.elasticsearch.common.logging.Loggers;
+
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -10,6 +13,8 @@ import java.util.Map;
  * Created by wky77 on 2017/7/30.
  */
 public class DBHelper {
+    public static final Logger logger = Loggers.getLogger(DBHelper.class);
+
     public static String dbUrl = "";
     public static String userName = "";
     public static String userPwd = "";
@@ -51,7 +56,7 @@ public class DBHelper {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.warn(e.getMessage());
         }
         return data.toString();
 
